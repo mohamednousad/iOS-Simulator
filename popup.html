@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iOSSimulator</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <div class="brand">
+      <span class="apple">&#63743;</span>
+      <span>iOSSimulator</span>
+    </div>
+    <button id="openTab" class="ghost" title="Open in full tab">&#8599;</button>
+  </header>
+
+  <section class="controls">
+    <div class="row">
+      <input id="url" type="text" placeholder="Enter a website URL (example.com)" autocomplete="off" spellcheck="false">
+      <button id="go" class="primary">Load</button>
+    </div>
+    <div class="row two">
+      <label class="sel">
+        <span>Device</span>
+        <select id="device"></select>
+      </label>
+      <label class="sel">
+        <span>Zoom</span>
+        <select id="zoom">
+          <option value="0.5">50%</option>
+          <option value="0.6">60%</option>
+          <option value="0.7" selected>70%</option>
+          <option value="0.8">80%</option>
+          <option value="0.9">90%</option>
+          <option value="1">100%</option>
+        </select>
+      </label>
+    </div>
+    <div class="row chips">
+      <button class="chip" data-quick="https://wikipedia.org">Wikipedia</button>
+      <button class="chip" data-quick="https://example.com">Example</button>
+      <button class="chip" data-quick="https://news.ycombinator.com">HN</button>
+      <button class="chip" id="rotate">&#8635; Rotate</button>
+    </div>
+  </section>
+
+  <section class="stage" id="stage">
+    <div class="phone" id="phone">
+      <div class="phone-frame">
+        <div class="dyn-island"></div>
+        <div class="phone-screen">
+          <div class="status">
+            <span class="s-time" id="clock">9:41</span>
+            <span class="s-right">
+              <span class="s-signal">&#9679;&#9679;&#9679;&#9679;</span>
+              <span class="s-wifi">&#128246;</span>
+              <span class="s-batt">&#128267;</span>
+            </span>
+          </div>
+          <div class="webwrap">
+            <iframe id="frame" title="Preview" referrerpolicy="no-referrer"></iframe>
+            <div class="empty" id="empty">
+              <div class="emoji">&#128241;</div>
+              <p>Enter a URL and tap Load to preview any site inside an iPhone.</p>
+            </div>
+            <div class="blocked" id="blocked" hidden>
+              <div class="emoji">&#128683;</div>
+              <p>This site blocks embedding.</p>
+              <button id="openBlocked" class="primary sm">Open in real device tab</button>
+            </div>
+          </div>
+          <div class="home-ind"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot"><span id="devlabel">iPhone 15 Pro</span> &middot; iOSSimulator</footer>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
