@@ -1,0 +1,146 @@
+:root{
+  --bg:#0b0d10;--bg2:#111418;--panel:#15191e;--line:#23282f;
+  --txt:#e8ecf1;--muted:#8a93a0;--accent:#0a84ff;--accent2:#2c9cff;
+  --frame:#1c1f24;--frame-edge:#2b2f36;--radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:
+    radial-gradient(1200px 600px at 70% -10%,rgba(10,132,255,.10),transparent 60%),
+    radial-gradient(900px 500px at 0% 110%,rgba(120,80,255,.08),transparent 55%),
+    var(--bg);
+  color:var(--txt);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  display:flex;flex-direction:column;min-height:100vh;overflow-x:hidden;
+}
+
+/* ---------- Top bar ---------- */
+.bar{
+  display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+  padding:14px 22px;background:rgba(17,20,24,.86);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+}
+.brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.brand-mark{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--accent),#6a5cff);color:#fff;font-size:18px;
+  box-shadow:0 6px 18px rgba(10,132,255,.4);
+}
+.brand-name{font-weight:700;font-size:19px;letter-spacing:-.2px}
+.brand-name span{color:var(--accent2)}
+
+.controls{display:flex;align-items:center;gap:16px;flex:1;flex-wrap:wrap}
+.ctrl{display:flex;flex-direction:column;gap:5px}
+.ctrl.grow{flex:1;min-width:260px}
+.ctrl>span{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600}
+select{
+  appearance:none;-webkit-appearance:none;background:var(--panel);color:var(--txt);
+  border:1px solid var(--line);border-radius:9px;padding:10px 34px 10px 12px;font-size:14px;
+  font-weight:500;cursor:pointer;min-width:170px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238a93a0' viewBox='0 0 16 16'><path d='M8 11L3 6h10z'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center;
+}
+select:focus{outline:none;border-color:var(--accent)}
+
+.addr{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:0 8px 0 13px;height:42px}
+.addr i{color:var(--muted);font-size:12px}
+.addr input{flex:1;background:transparent;border:0;color:var(--txt);font-size:14px;height:100%;outline:none}
+.addr input::placeholder{color:#5a626d}
+.addr button{width:32px;height:32px;border:0;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer;font-size:13px}
+.addr button:hover{background:var(--accent2)}
+
+.btns{display:flex;gap:8px}
+.btns button{
+  width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+  color:var(--txt);cursor:pointer;font-size:15px;transition:.18s;
+}
+.btns button:hover{border-color:var(--accent);color:var(--accent2)}
+.btns button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ---------- Stage ---------- */
+.stage{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  padding:40px 20px 30px;position:relative;overflow:auto;
+}
+.device-wrap{transition:transform .3s ease}
+
+/* ---------- iPhone frame ---------- */
+.iphone{
+  position:relative;background:linear-gradient(145deg,#2a2e35,#15181d);
+  border-radius:58px;padding:14px;box-shadow:
+    0 0 0 2px var(--frame-edge),
+    0 40px 90px rgba(0,0,0,.6),
+    inset 0 0 3px rgba(255,255,255,.25);
+}
+.iphone .screen{
+  position:relative;background:#000;border-radius:46px;overflow:hidden;
+}
+.iphone .screen iframe{display:block;border:0;width:100%;height:100%;background:#fff}
+
+/* Dynamic Island */
+.island{
+  position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  width:34%;max-width:126px;height:31px;background:#000;border-radius:20px;z-index:6;
+  display:flex;align-items:center;justify-content:flex-end;gap:8px;padding-right:12px;
+}
+.island:after{content:"";width:9px;height:9px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#243b55,#000)}
+
+/* Status bar overlay */
+.statusbar{
+  position:absolute;top:0;left:0;right:0;height:52px;z-index:5;pointer-events:none;
+  display:flex;align-items:center;justify-content:space-between;padding:16px 30px 0;
+  font-size:14px;font-weight:600;color:#111;
+}
+.statusbar.dark{color:#fff}
+.statusbar .right{display:flex;align-items:center;gap:7px;font-size:15px}
+
+/* Side buttons */
+.btn-side{position:absolute;background:#20242b;border-radius:3px}
+.btn-power{right:-3px;top:170px;width:4px;height:78px}
+.btn-vol-up{left:-3px;top:150px;width:4px;height:52px}
+.btn-vol-dn{left:-3px;top:212px;width:4px;height:52px}
+.btn-mute{left:-3px;top:104px;width:4px;height:30px}
+
+/* ---------- MacBook frame ---------- */
+.macbook{position:relative}
+.mac-lid{
+  background:linear-gradient(145deg,#2a2e35,#15181d);border-radius:22px;padding:14px;
+  box-shadow:0 0 0 2px var(--frame-edge),0 30px 70px rgba(0,0,0,.55),inset 0 0 3px rgba(255,255,255,.2);
+}
+.mac-cam{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:7px;height:7px;
+  border-radius:50%;background:#0c0f13;z-index:5;box-shadow:inset 0 0 2px rgba(120,160,255,.5)}
+.mac-screen{position:relative;background:#000;border-radius:10px;overflow:hidden}
+.mac-screen iframe{display:block;border:0;width:100%;height:100%;background:#fff}
+.mac-base{
+  height:20px;margin:0 auto;border-radius:0 0 16px 16px;
+  background:linear-gradient(180deg,#3a3f47,#20242b);position:relative;
+  box-shadow:0 12px 24px rgba(0,0,0,.5);
+}
+.mac-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:9px;
+  background:linear-gradient(180deg,#4a505a,#33383f);border-radius:0 0 9px 9px}
+
+/* Safari chrome (top address bar shown inside device) */
+.safari-chrome{
+  height:44px;background:#f7f7f8;display:flex;align-items:center;gap:10px;padding:0 16px;
+  border-bottom:1px solid #e2e2e5;font-size:13px;color:#3a3a3c;
+}
+.safari-chrome.dark{background:#2a2a2c;border-color:#3a3a3c;color:#e6e6e6}
+.safari-chrome .sc-url{flex:1;background:#e9e9eb;border-radius:8px;height:28px;display:flex;
+  align-items:center;justify-content:center;gap:7px;font-size:12.5px;color:#3a3a3c;overflow:hidden;
+  white-space:nowrap;text-overflow:ellipsis;padding:0 10px}
+.safari-chrome.dark .sc-url{background:#3a3a3c;color:#e6e6e6}
+.safari-chrome .sc-ico{color:#9a9a9e;font-size:13px}
+.mac-safari-chrome{border-radius:10px 10px 0 0}
+
+.hint{max-width:900px;margin:0 auto 26px;padding:12px 20px;color:var(--muted);
+  font-size:12.5px;text-align:center;line-height:1.6}
+
+@media(max-width:700px){
+  .bar{gap:14px;padding:12px 14px}
+  .ctrl.grow{min-width:100%;order:5}
+  select{min-width:140px}
+  .stage{padding:24px 8px}
+}

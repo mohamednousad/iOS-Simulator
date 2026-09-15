@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IosSimulator</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="simulator.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="brand">
+    <span class="brand-mark"><i class="fa-solid fa-mobile-screen-button"></i></span>
+    <span class="brand-name">Ios<span>Simulator</span></span>
+  </div>
+
+  <div class="controls">
+    <label class="ctrl">
+      <span>Device</span>
+      <select id="deviceSelect"></select>
+    </label>
+
+    <label class="ctrl">
+      <span>Browser</span>
+      <select id="browserSelect">
+        <option value="safari" selected>Safari</option>
+        <option value="chrome">Chrome</option>
+      </select>
+    </label>
+
+    <label class="ctrl grow">
+      <span>Address</span>
+      <div class="addr">
+        <i class="fa-solid fa-lock"></i>
+        <input id="urlInput" type="text" spellcheck="false"
+               placeholder="Enter a URL, e.g. apple.com" value="https://www.wikipedia.org">
+        <button id="goBtn" title="Load"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </label>
+
+    <div class="btns">
+      <button id="reloadBtn" title="Reload"><i class="fa-solid fa-rotate-right"></i></button>
+      <button id="rotateBtn" title="Rotate"><i class="fa-solid fa-mobile-screen"></i></button>
+      <button id="themeBtn" title="Light / Dark"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      <button id="fitBtn" title="Fit to screen" class="on"><i class="fa-solid fa-maximize"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="stage" class="stage">
+  <div id="deviceWrap" class="device-wrap">
+    <!-- device is injected here -->
+  </div>
+</main>
+
+<div class="hint" id="hint">
+  Some sites (Google, Instagram, X) block embedding and may show a blank screen. That is the
+  site refusing to load in a frame, not the simulator. Try apple.com, wikipedia.org, github.com,
+  or your own site.
+</div>
+
+<script src="simulator.js"></script>
+</body>
+</html>
